@@ -1,0 +1,43 @@
+﻿<div class="side-form">
+    <div class="content">
+        <h1>{{vm.title}}</h1>
+
+        <div class="form-container">
+            <form name="userForm">
+                <md-input-container>
+                    <label for="firstName">First Name</label>
+                    <input type="text" ng-model="vm.user.firstName" name="firstName" required />
+                    <div ng-messages="userForm.firstName.$dirty && userForm.firstName.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" ng-model="vm.user.lastName" name="lastName" required />
+                    <div ng-messages="userForm.lastName.$dirty && userForm.lastName.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="username">Username</label>
+                    <input type="text" ng-model="vm.user.username" name="username" required md-maxlength="20" />
+                    <div ng-messages="userForm.username.$dirty && userForm.username.$error">
+                        <div ng-message="required">This is required.</div>
+                        <div ng-message="md-maxlength">Username must be 20 characters or less.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="password">Password</label>
+                    <input type="password" ng-model="vm.user.password" name="password" ng-required="!vm.user.id" />
+                    <div ng-messages="userForm.password.$dirty && userForm.password.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-button ng-click="vm.saveUser(vm.user)" class="md-raised md-primary">Save</md-button>
+                <md-button ui-sref="users" class="md-raised">Cancel</md-button>
+            </form>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
