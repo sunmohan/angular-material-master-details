@@ -1,8 +1,13 @@
 ﻿/* GENERAL STYLES AND CLASSES 
 --------------------------------------------------------------------- */
+*::after, *::before {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     h1 {
         font-weight: normal;
@@ -22,6 +27,10 @@ body {
             background: #c9302c;
         }
 
+        .md-toast-content {
+            background-color: inherit;
+        }
+
         .fa {
             font-size: 20px;
             margin-right: 5px;
@@ -35,62 +44,75 @@ body {
 
     /* view animate container */
     .view-animate {
-        min-width: 60%;
-
         .side-form {
-            .background {
-                background: #000;
-                opacity: .8;
-            }
-        }
-
-        &.ng-enter, &.ng-leave {
-            transition: left .5s;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
 
-            .form-container {
-                display: none;
+            .content {
+                position: absolute;
+                z-index: 100;
+                top: 0;
+                right: 0;
+                width: 80%;
+                height: 100%;
+                overflow: auto;
+                background: #fff;
+                padding: 20px;
+                border-left: 1px solid #e0e0e0;
             }
 
-            .side-form {
-                position: static;
+            .background {
+                background: #000;
+                opacity: .8;
+                width: 100%;
+                height: 100%;
             }
+        }
+
+        &.ng-enter, 
+        &.ng-leave {
+            transition: .5s;
         }
 
         &.ng-enter {
-            left: 100%;
-
             .side-form {
+                .content {
+                    right: -80%;
+                }
+
                 .background {
                     opacity: 0;
-                }
-            }
-
-            &.ng-enter-active {
-                left: 0;
-
-                .side-form {
-                    .background {
-                        opacity: .8;
-                        transition: opacity .5s;
-                    }
                 }
             }
         }
 
-        &.ng-leave {
-            &.ng-leave-active {
-                left: 100%;
-            }
-
+        &.ng-enter-active {
             .side-form {
+                .content {
+                    transition: right .5s;
+                    right: 0;
+                }
+
                 .background {
-                    opacity: 0;
                     transition: opacity .5s;
+                    opacity: .8;
+                }
+            }
+        }
+
+        &.ng-leave-active {
+            .side-form {
+                .content {
+                    transition: right .5s;
+                    right: -85%;
+                }
+
+                .background {
+                    transition: opacity .5s;
+                    opacity: 0;
                 }
             }
         }
@@ -123,22 +145,13 @@ header {
                 }
             }
         }
-
-        .logout {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: #fff;
-        }
     }
 }
 
 /* MAIN STYLES
 --------------------------------------------------------------------- */
 main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    flex: 1 0 auto;
 
     .subnav {
         border-bottom: 1px solid #e0e0e0;
@@ -150,10 +163,10 @@ main {
     }
 
     .main-content {
-        flex: 1;
         padding: 20px;
         overflow: auto;
         position: relative;
+
         /* wijmo grid */
         .wj-flexgrid {
             height: 500px;
@@ -187,65 +200,6 @@ main {
                         font-size: 14px;
                     }
                 }
-            }
-        }
-        /* side form */
-        .side-form {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            .content {
-                min-width: 60%;
-                position: absolute;
-                z-index: 100;
-                right: 0;
-                top: 0;
-                background: #fff;
-                padding: 20px;
-                border-left: 1px solid #e0e0e0;
-                height: 100%;
-                box-sizing: border-box;
-                overflow: auto;
-
-                .drop-box {
-                    background: #F8F8F8;
-                    border: 5px dashed #DDD;
-                    width: 100%;
-                    height: 110px;
-                    text-align: center;
-                    padding-top: 40px;
-                    box-sizing: border-box;
-                    margin: 10px 0 10px 0;
-                }
-
-                .files {
-                    margin-bottom: 20px;
-
-                    md-progress-linear {
-                        padding-top: 10px;
-                        margin-bottom: 20px;
-                    }
-
-                    .remove {
-                        color: #c9302c;
-                        text-decoration: none;
-                    }
-
-                    .error {
-                        color: #c9302c;
-                    }
-                }
-            }
-
-            .background {
-                position: fixed;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
             }
         }
     }

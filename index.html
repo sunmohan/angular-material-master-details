@@ -10,14 +10,12 @@
     <link href="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css" rel="stylesheet" />
     <link href="/app-lib/wijmo/wijmo.min.css" rel="stylesheet" />
     <link href="/app-content/app.less" rel="stylesheet/less" type="text/css" />
-
-    <base href="/" />
 </head>
 <body>
     <!-- header -->
     <header class="md-whiteframe-z1">
         <nav ng-controller="TabsController as vm" layout="column" class="tabs">
-            <md-tabs layout="column" layout-align="center start" md-selected="vm.selectedTab">
+            <md-tabs md-selected="vm.selectedTab">
                 <md-tab ng-repeat="tab in vm.tabs">
                     <md-tab-label>
                         <a href="{{tab.path}}">{{tab.name}}</a>
@@ -61,19 +59,16 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
     <!-- angular -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 
     <!-- ui router -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
     <!-- angular material -->
-    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
-
-    <!-- socket io -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 
     <!-- wijmo -->
     <script src="/app-lib/wijmo/wijmo.min.js"></script>
